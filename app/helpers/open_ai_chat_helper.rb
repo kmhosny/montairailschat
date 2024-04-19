@@ -1,0 +1,2 @@
+module OpenAiChatHelper
+end
