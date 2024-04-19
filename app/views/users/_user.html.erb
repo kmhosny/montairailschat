@@ -3,8 +3,12 @@
     <strong>Email:</strong>
     <%= user.email %>
   </p>
-<%= form chat_path do%>
-  <%= text_field_tag :message %>
-  <%= submit_tag "Send" %>
-<% end %>
+  <div data-controller="chat">
+    <%= text_field_tag :message %>
+    <button id="send_message" data-action="chat#sendMessage">
+      Send
+    </button>
+    <p data-target="chat.messages">
+    </p>
+  </div>
 </div>
