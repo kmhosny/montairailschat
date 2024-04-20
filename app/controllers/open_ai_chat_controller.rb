@@ -1,4 +1,7 @@
 class OpenAiChatController < ApplicationController
+  skip_forgery_protection if Proc.new { |c| c.request.format.json? }
+  before_action :authenticate_request!
+
   def create
     message = params[:message]
     render json: { error: "Message is required" }, status: :bad_request if message.blank?

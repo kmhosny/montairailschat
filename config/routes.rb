@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   resources :users
-  post "chat" => "open_ai_chat#create"
+  post "/chat" => "open_ai_chat#create"
+  
+  get "/login" => "sessions#show"
+  post "/login" => "sessions#new"
+
+  namespace :api do
+    post :login, to: 'authentication#login'
+    post :signup, to: 'authentication#signup'
+  end
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
