@@ -1,4 +1,2 @@
 web: rails server -p 3000
 css: rails tailwindcss:watch
-sidekiq: bundle exec sidekiq -c 2
-queue: redis-server

@@ -1,0 +1,2 @@
+<%= turbo_stream.append "chat_messages", partial: "chat_histories/chat_history", locals: { chat_history: @chat_history_request } %>
+<%= turbo_stream.append "chat_messages", partial: "chat_histories/chat_history", locals: { chat_history: @chat_history_response } %>

@@ -1,15 +1,23 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>Email:</strong>
+    <strong>Logged In User:</strong>
     <%= user.email %>
   </p>
-  <div data-controller="chat">
-    <%= text_field_tag :message %>
-    <button id="send_message" data-action="chat#sendMessage">
-      Send
-    </button>
-    <div data-target="chat.messages">
+  <div data-controller="chat" class="mt-3 relative">
+
+    <div id ="chat_messages" data-target="chat_history" class="overflow-y-auto h-screen border border-gray-300 rounded-lg box-border p-4">
       <%= render user.chat_histories %>
+    </div>
+
+    <div class="flex flex-row justify-center p-4 sticky bottom-0 bg-white">
+      <%= text_field_tag :message, nil, class: "mr-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg basis-1/2", required: true %>
+      <button id="send_message" data-action="chat#sendMessage" type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-gray-800 hover:bg-gray-600 transition ease-in-out duration-150">
+        <svg id="loading" class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24" hidden>
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Send
+      </button>
     </div>
   </div>
 </div>

@@ -1,11 +1,13 @@
-<div d="<%= dom_id chat_history %>" >
-  <p>
-    <% if chat_history.request? %>
-        U:
-    <% else %>
-      
-        AI:
-    <%end%>
+<div id="<%= dom_id chat_history %>" class="flex flex-wrap mt-3 mb-3" data-message-selector="chat_message">
+  <span class="inline-block">
+    <strong class="mr-1">
+      <% if chat_history.request? %>
+          You:
+      <% else %>
+          AI:
+      <%end%>
+    </strong>
+    <br>
       <%= chat_history.message %>
-  </p>
+  </span>
 </div>
