@@ -47,7 +47,7 @@ gem "sidekiq"
 
 gem 'requestjs-rails'
 
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 gem 'jwt'
 
