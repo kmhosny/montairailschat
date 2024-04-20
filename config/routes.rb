@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   get "/" => "sessions#show"
   get "/login" => "sessions#show"
+  get "/signup" => "users#index"
   post "/login" => "sessions#new"
+  delete "/logout" => "sessions#destroy"
 
   namespace :api do
     post :login, to: 'authentication#login'

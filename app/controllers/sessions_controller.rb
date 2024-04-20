@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
       render :show
     end
   end
+
+  def destroy
+    cookies.delete(:user_id)
+    redirect_to login_path
+  end
 end

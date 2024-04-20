@@ -1,11 +1,27 @@
-<%= form_with url: login_path do |form| %>
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+<div>
+  <% if notice == "Unauthorized Action" %>
+    <p class="text-red-500">
+  <% else %>
+  <p class="text-green-500">
+  <% end %>
+    <%= notice %>
+  </p>
+  <div class="text-3xl font-bold text-center">
+      User Login
+       <%= link_to "or go to Signup", signup_path, class: "text-blue-500 underline text-sm" %>
   </div>
-  <div>
-    <%= form.label :password, style: "display: block"%>
-    <%= form.password_field :password %>
-  </div>
-  <%= submit_tag :login %>
-<%end%>
+  
+  <%= form_with url: login_path do |form| %>
+    <div class="mt-3">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email %>
+    </div>
+    <div class="mt-3">
+      <%= form.label :password, style: "display: block"%>
+      <%= form.password_field :password %>
+    </div>
+    <div class="text-center mt-3">
+      <%= form.submit :login, class: "inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-gray-800 hover:bg-gray-600 transition ease-in-out duration-150" %>
+    </div>
+  <%end%>
+</div>

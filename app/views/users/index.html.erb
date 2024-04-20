@@ -1,14 +1,9 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div>
+  <div class="text-3xl font-bold text-center">
+    Welcome To Montai genAI chat app task
+  </div>
+  <div class="block text-center mt-10">
+    <%= link_to "Signup", new_user_path, class: "inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-gray-800 hover:bg-gray-600 transition ease-in-out duration-150" %>
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>
