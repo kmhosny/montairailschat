@@ -24,7 +24,7 @@ test:
 
 production:
   <<: *default
-  database: montai_rails
+  database: montai_rails_8w8v
   host: <%= Rails.application.credentials.database_url %>
   username: <%= Rails.application.credentials.database_username %>
   password: <%= Rails.application.credentials.database_password %>
