@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   post "/chat" => "open_ai_chat#create"
   
+  get "/" => "sessions#show"
   get "/login" => "sessions#show"
   post "/login" => "sessions#new"
 
