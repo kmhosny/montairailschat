@@ -26,4 +26,13 @@ class ApplicationController < ActionController::Base
   rescue
     nil
   end
+
+  def authorized_action
+    if @user.id != @current_user.id
+      respond_to do |format|
+        format.json { render json: { errors: e.message }, status: :unauthorized }
+        format.html { redirect_to @current_user, notice: 'Unauthorized Action' }
+      end
+    end
+  end
 end

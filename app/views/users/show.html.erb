@@ -1,5 +1,9 @@
 <div>
-  <p style="color: green">
+  <% if notice == "Unauthorized Action" %>
+    <p class="text-red-500">
+  <% else %>
+  <p class="text-green-500">
+  <% end %>
     <%= notice %>
   </p>
 
