@@ -11,7 +11,8 @@ export default class extends Controller {
     if (response.ok) {
       const body = await response.json
       document.getElementById("message").value = ""
-      document.querySelector("[data-target='chat.messages']").insertAdjacentHTML("beforeend", "<br>"+body.response)
+      document.querySelector("[data-target='chat.messages']").insertAdjacentHTML("beforeend", "<br> U: "+message)
+      document.querySelector("[data-target='chat.messages']").insertAdjacentHTML("beforeend", "<br> AI: "+body.response)
     }
   }
 }

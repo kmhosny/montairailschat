@@ -1,0 +1,11 @@
+<div d="<%= dom_id chat_history %>" >
+  <p>
+    <% if chat_history.request? %>
+        U:
+    <% else %>
+      
+        AI:
+    <%end%>
+      <%= chat_history.message %>
+  </p>
+</div>
