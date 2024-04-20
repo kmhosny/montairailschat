@@ -10,10 +10,11 @@ class ApplicationController < ActionController::Base
         cookies.encrypted[:user_id]
       end
       @current_user = User.find(user_id)
-    rescue ActiveRecord::RecordNotFound => e
-      render json: { errors: e.message }, status: :unauthorized
-    rescue JWT::DecodeError => e
-      render json: { errors: e.message }, status: :unauthorized
+    rescue ActiveRecord::RecordNotFound, JWT::DecodeError => e
+      respond_to do |format|
+        format.json { render json: { errors: e.message }, status: :unauthorized }
+        format.html { redirect_to login_path, notice: 'Unauthorized Action' }
+      end
     end
   end
 
