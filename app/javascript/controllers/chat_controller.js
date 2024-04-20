@@ -6,6 +6,7 @@ export default class extends Controller {
   async sendMessage(event) {
     event.preventDefault()
     document.getElementById("loading").removeAttribute("hidden")
+    document.getElementById("no_chat_history").setAttribute("hidden", true)
     const message = document.getElementById("message").value
     const response = await post("/chat",{
       body: JSON.stringify({ message: message }),
@@ -15,8 +16,6 @@ export default class extends Controller {
     if (response.ok) {
       document.getElementById("message").value = ""
       document.getElementById("loading").setAttribute("hidden", true)
-      const messages = document.querySelectorAll("[data-message-selector]");
-      messages.scrollTop = messages[message.length-1].scrollHeight;
     }
   }
 }
