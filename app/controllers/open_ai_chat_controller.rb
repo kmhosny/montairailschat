@@ -4,7 +4,7 @@ class OpenAiChatController < ApplicationController
 
   def create
     message = params[:message]
-    render json: { error: "Message is required" }, status: :bad_request; return if message.blank?
+    return render json: { error: "Message is required" }, status: :bad_request if message.blank?
     message_received_at = Time.now
 
     begin
@@ -17,7 +17,7 @@ class OpenAiChatController < ApplicationController
     })
     response_message = response.dig("choices", 0, "message", "content")
     rescue OpenAI::Error, Faraday::BadRequestError => e
-      render json: { error: e.message }, status: :internal_server_error; return
+      return render json: { error: e.message }, status: :internal_server_error
     end
 
     ChatHistory.transaction do
