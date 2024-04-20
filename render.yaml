@@ -1,0 +1,33 @@
+# Exported from Render on 2024-04-20T23:22:35Z
+databases:
+- name: montai-rails-chat-db
+  databaseName: montai_rails_8w8v
+  user: montai_rails_user
+  plan: free
+  region: ohio
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: montairailschat
+  runtime: ruby
+  repo: https://github.com/kmhosny/montairailschat
+  plan: free
+  envVars:
+  - key: WEB_CONCURRENCY
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: database_username
+    sync: false
+  - key: database_url
+    sync: false
+  - key: database_password
+    sync: false
+  region: ohio
+  buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
+    assets:clean; rails db:prepare;
+  startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-production}
+version: "1"
