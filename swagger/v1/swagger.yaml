@@ -1,0 +1,131 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/signup":
+    post:
+      summary: signup authentication
+      description: This endpoint is used to create ana authenticate a user
+      parameters: []
+      responses:
+        '201':
+          description: successful
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/logged_in_user"
+        '422':
+          description: unprocessible entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/signup_user"
+  "/api/login":
+    post:
+      summary: login authentication
+      description: This endpoint is used to log in a user
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/login_user"
+  "/chat":
+    post:
+      summary: create open_ai_chat
+      description: This endpoint is used to chat with chatGPT
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/request_message"
+components:
+  schemas:
+    signup_user:
+      type: object
+      required:
+      - user
+      properties:
+        user:
+          type: object
+          required:
+          - email
+          - password
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+    logged_in_user:
+      type: object
+      required:
+      - token
+      - user
+      properties:
+        token:
+          type: string
+        user:
+          type: object
+          required:
+          - id
+          - email
+          properties:
+            id:
+              type: string
+            email:
+              type: string
+    login_user:
+      type: object
+      required:
+      - email
+      - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    request_message:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000

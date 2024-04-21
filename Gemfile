@@ -57,6 +57,7 @@ gem 'jwt'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -80,3 +81,5 @@ end
 gem "tailwindcss-rails", "~> 2.4"
 
 gem "pg", "~> 1.5"
+
+gem "rswag", "~> 2.13"
