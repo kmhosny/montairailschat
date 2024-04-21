@@ -6,7 +6,10 @@ export default class extends Controller {
   async sendMessage(event) {
     event.preventDefault()
     document.getElementById("loading").removeAttribute("hidden")
-    document.getElementById("no_chat_history").setAttribute("hidden", true)
+    const no_chat = document.getElementById("no_chat_history")
+    if (no_chat) {
+      no_chat.setAttribute("hidden", true)
+    }
     const message = document.getElementById("message").value
     const response = await post("/chat",{
       body: JSON.stringify({ message: message }),
