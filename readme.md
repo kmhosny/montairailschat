@@ -15,6 +15,8 @@ The app serves 2 clients, web and through API.
 
 When using the app through web client, it uses cookies to create user sessions while through APIs it uses JWT to authenticate and authorize the user for actions.
 
+Turbo streams are used to allow for html over the wire updates for responses received from GPT to avoid doing page reloads.
+
 #### Available APIs
 API documentations can be accessed through swagger at https://montairailschat.onrender.com/api-docs
 
