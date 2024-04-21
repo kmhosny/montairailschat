@@ -125,7 +125,7 @@ components:
         message:
           type: string
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: 127.0.0.1:3000
+      default: montairailschat.onrender.com
