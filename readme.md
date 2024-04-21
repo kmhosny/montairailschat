@@ -1,6 +1,6 @@
-### Monta AI Rails Chat
+### Monta AI Rails Chat with GPT App
 
-The Monta AI task is developed using Ruby on Rails instead of the most go to options.
+The Monta AI task is developed using Ruby on Rails instead of the most go to options such as fastAPI.
 
 ### Why Rails
 
