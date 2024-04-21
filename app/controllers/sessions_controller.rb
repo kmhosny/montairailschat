@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def new
     user = User.find_by(email: params[:email])
     Rails.logger.info("PARAMS #{params.inspect}")
-    if user&.authenticate(params[:password_digest])
+    if user&.authenticate(params[:password])
       Rails.logger.info("User #{user.id} logged in")
       cookies.encrypted[:user_id] = user.id
       redirect_to user_path(user)
